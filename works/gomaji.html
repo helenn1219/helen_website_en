@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gomaji City Park Campaign | Helen Hsieh</title>
+<meta name="description" content="A single-page campaign site for GOMAJI's brand relaunch that had to do two jobs in 3 weeks: introduce a new brand identity and drive ticket sales — landing an 80% coupon redemption rate.">
+<meta property="og:title" content="Gomaji City Park Campaign | Helen Hsieh">
+<meta property="og:description" content="A single-page campaign site for GOMAJI's brand relaunch, built in 3 weeks — 80% coupon redemption rate.">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/gomaji.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#E3A26B; --accent-solid:#D9641E; --accent-wash:rgba(217,100,30,.09); --accent-glow:rgba(217,100,30,.38);}
+.process-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 var(--page-x) 140px;}
+.process-item{position:relative;overflow:hidden;background:var(--bg-mid);border:1px solid var(--border-dim);}
+.process-item img{width:100%;display:block;filter:grayscale(.1);transition:transform 1.4s ease,filter 1.4s ease;}
+.process-item:hover img{transform:scale(1.03);filter:grayscale(0);}
+.process-video{position:relative;width:100%;aspect-ratio:16/9;}
+.process-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+.process-caption{padding:14px 18px;font-size:11px;letter-spacing:.08em;line-height:1.6;color:rgba(240,237,230,.55);border-top:1px solid var(--border-dim);}
+.process-caption b{color:var(--text);font-weight:500;}
+@media(max-width:760px){
+  .process-grid{grid-template-columns:1fr;padding:0 var(--page-x) 64px;}
+}
+
+/* ── LIGHTBOX ── */
+.process-trigger{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;}
+.process-video-catch{position:absolute;inset:0;width:100%;height:100%;}
+.process-trigger:focus-visible{outline:1px solid var(--accent,var(--gold));outline-offset:-4px;}
+
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(6,8,10,.94);display:flex;align-items:center;justify-content:center;padding:96px var(--page-x) 88px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.lightbox.open{opacity:1;pointer-events:auto;}
+.lightbox[hidden]{display:none;}
+.lightbox-stage{max-width:1700px;width:100%;max-height:100%;aspect-ratio:16/9;}
+.lightbox-stage img,.lightbox-stage iframe{width:100%;height:100%;object-fit:contain;border:0;display:block;background:#000;}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;display:flex;align-items:center;justify-content:center;border:1px solid rgba(240,237,230,.25);background:rgba(13,17,20,.45);color:var(--text);cursor:pointer;transition:border-color .3s,color .3s,background .3s;}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{border-color:var(--accent,var(--gold));color:var(--accent,var(--gold));}
+.lightbox-close{top:28px;right:var(--page-x);width:44px;height:44px;font-size:15px;}
+.lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);width:52px;height:52px;font-size:18px;}
+.lightbox-prev{left:var(--page-x);}
+.lightbox-next{right:var(--page-x);}
+.lightbox-caption{position:absolute;left:0;right:0;bottom:32px;text-align:center;font-size:12px;letter-spacing:.06em;line-height:1.6;color:rgba(240,237,230,.6);padding:0 120px;}
+@media(max-width:760px){
+  .lightbox{padding:88px 24px 100px;}
+  .lightbox-prev{left:8px;}
+  .lightbox-next{right:8px;}
+  .lightbox-caption{padding:0 60px;}
+}
+
+.onsite-photos-hero{margin-bottom:16px;}
+.onsite-photos-hero .onsite-photo{aspect-ratio:2/1;}
+.onsite-photos-hero .onsite-photo img{object-position:top;}
+.onsite-photos-grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.onsite-photos-grid4 .onsite-photo{aspect-ratio:3/2;}
+@media(max-width:600px){.onsite-photos-grid4{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">Chinese CV</a>
+    </div>
+  </details>
+</nav>
+
+<section class="detail-hero">
+  <img src="../img/gomaji.jpg" alt="Gomaji City Park campaign key visual">
+  <div class="detail-hero-overlay"></div>
+  <div class="detail-hero-content">
+    <a href="../index.html#works" class="detail-back">← BACK TO ARCHIVE</a>
+    <span class="detail-tag"><i class="detail-tag-dot"></i>CONVERSION DESIGN · TRANSACTION FLOW · 2023</span>
+    <h1 class="detail-title">Gomaji City Park<br>Campaign</h1>
+    <a href="https://event.gomaji.com/activities/202306/carnivalcity2023/" target="_blank" rel="noopener" class="detail-live-btn">VISIT LIVE SITE ↗</a>
+  </div>
+</section>
+
+<div class="detail-body">
+  <div class="detail-meta">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Client</div>
+      <div class="detail-meta-value">GOMAJI</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Role</div>
+      <div class="detail-meta-value">Web Designer · UI Designer<br>Brand extension, site planning &amp; front-end build</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Timeline</div>
+      <div class="detail-meta-value">Jun 2023 · 1.5 weeks planning + 1.5 weeks design (3 weeks total)</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Tools</div>
+      <div class="detail-meta-value">Photoshop · Illustrator · Sublime</div>
+    </div>
+  </div>
+
+  <div class="detail-main">
+    <p class="detail-lede">80% coupon redemption rate. A single-page campaign site for GOMAJI's first city-wide carnival after a full brand relaunch — built to do two jobs at once in 3 weeks: introduce the new brand identity to existing members, and convert that attention into ticket purchases and on-site redemptions.</p>
+
+    <div class="detail-stats">
+      <div><div class="detail-stat-num">80%</div><div class="detail-stat-label">Coupon Redemption Rate</div></div>
+      <div><div class="detail-stat-num">5,000+</div><div class="detail-stat-label">On-Site Attendees</div></div>
+      <div><div class="detail-stat-num">42</div><div class="detail-stat-label">Partner Vendor Booths</div></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Challenge</h4>
+      <p>This was GOMAJI's first large-scale physical carnival under a brand-new identity. The site had to do two things at once: introduce a company-wide rebrand to a member base built over a decade, and turn that attention into an actual purchase-and-redemption flow. With only 3 weeks for planning and design combined, the challenge was making a single-page site clearly communicate both "the brand is new" and "this event is worth showing up for" — without either message drowning out the other.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Approach</h4>
+      <p>I designed for three target groups — families, fan-community audiences, and existing app/e-commerce users — carrying the new brand color system and the new mascot character through a single-page scrolling layout that segmented event highlights, featured food vendors, and logistics info, with the ticket-purchase and coupon-redemption entry point kept visible at every scroll position on both desktop and mobile. I worked directly with marketing and the vendor-partnership team throughout to make sure the on-site redemption flow matched what the site promised.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Outcome</h4>
+      <p>The site hit both goals: on the transaction side, it drew 5,000+ attendees and 42 partner vendor booths on-site, with an 80% coupon redemption rate; on the brand side, it reached over 6 million member impressions, making it one of the highest-visibility moments in GOMAJI's rebrand year.</p>
+    </div>
+  </div>
+</div>
+
+<div class="detail-gallery">
+  <img src="../img/gomaji-process/process-5-final.jpg" alt="Gomaji City Park final desktop and mobile screens" loading="lazy">
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · FROM BRIEF TO BRAND EXTENSION</span>
+    <h3 class="onsite-title">Design Trail<br><em>From Screen to Site.</em></h3>
+    <p class="onsite-desc">From brand background and design spec to front-end build and on-site physical collateral — the full process behind taking "Gomaji City Park" from screen to a real event.</p>
+  </div>
+</section>
+
+<div class="process-grid">
+  <div class="process-item">
+    <button class="process-trigger" aria-label="Enlarge: Campaign Background">
+      <img src="../img/gomaji-process/process-2-background.jpg" alt="Gomaji City Park campaign background and goals" loading="lazy">
+    </button>
+    <div class="process-caption"><b>Campaign Background</b> · Promoting the new brand visuals and spirit, weaving in a "city" and "park" theme alongside the new mascot character, Maji Friend</div>
+  </div>
+  <div class="process-item">
+    <button class="process-trigger" aria-label="Enlarge: Design Spec">
+      <img src="../img/gomaji-process/process-3-designspec.jpg" alt="Gomaji City Park web design specification" loading="lazy">
+    </button>
+    <div class="process-caption"><b>Design Spec</b> · Target audience, a 5-color system, and desktop/mobile layout planning — slogan delivered via a speech-bubble motif paired with brand graphics</div>
+  </div>
+  <div class="process-item">
+    <button class="process-trigger" aria-label="Enlarge: Physical Extension">
+      <img src="../img/gomaji-process/process-4-extension.jpg" alt="Gomaji City Park brand extension into on-site physical materials" loading="lazy">
+    </button>
+    <div class="process-caption"><b>Physical Extension</b> · Key visual extended to invitation cards and banners, then built out as on-site backdrops, flags, and physical signage</div>
+  </div>
+  <div class="process-item">
+    <div class="process-video">
+      <iframe src="https://www.youtube.com/embed/7Y2rm-JwWdo?si=c58YTBgMSFFmYaof" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <button class="process-trigger process-video-catch" aria-label="Enlarge: Event Highlights"></button>
+    </div>
+    <div class="process-caption"><b>Event Highlights</b> · 858 buyers purchased 5,000+ coupons at a redemption rate near 80%, 42 vendor booths participated in redemption, app sign-ups hit a yearly high, and the promo video passed 10,000+ views</div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Design trail enlarged preview" hidden>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">←</button>
+  <div class="lightbox-stage" id="lightboxStage"></div>
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next">→</button>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · SUNSHINE SPORTS PARK · 2023.06</span>
+    <h3 class="onsite-title">On-Site<br><em>Live at the Park.</em></h3>
+    <p class="onsite-desc">Gomaji City Park launched at Sunshine Sports Park, Xindian, in June 2023 — photos from the live event below.</p>
+  </div>
+
+  <div class="onsite-photos-hero">
+    <div class="onsite-photo">
+      <img src="../img/gomaji-onsite/onesite-2.jpg" alt="Gomaji City Park event stage with a full crowd" loading="lazy">
+      <span class="onsite-caption">Event grounds · 5,000+ attendees on-site</span>
+    </div>
+  </div>
+
+  <div class="onsite-photos-grid4">
+    <div class="onsite-photo">
+      <img src="../img/gomaji-onsite/onesite-1.jpg" alt="Gomaji City Park campaign site in real on-site use" loading="lazy">
+      <span class="onsite-caption">Campaign site in on-site use</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/gomaji-onsite/onesite-3.jpg" alt="Gomaji City Park guest performance" loading="lazy">
+      <span class="onsite-caption">Guest performance on stage</span>
+    </div>
+  </div>
+</section>
+
+<a href="puli.html" class="detail-nextlink">
+  <div>
+    <div class="detail-nextlink-label">Next Case</div>
+    <div class="detail-nextlink-title">Puli Brewery · AI Navigation System</div>
+  </div>
+  <span class="detail-nextlink-arrow">→</span>
+</a>
+
+<footer id="contact">
+  <div class="footer-left">
+    <div class="section-eyebrow" style="margin-bottom:12px;">
+      <div class="cross"><div class="cross-dot"></div></div>
+      <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
+    </div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <div class="footer-info">
+      <p class="name">Helen Hsieh 謝孟庭</p>
+      <p>UI/UX Designer</p>
+      <p>Taipei, Taiwan · Open to remote &amp; overseas roles</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
+      <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-col">
+      <h4>Archive_Metadata</h4>
+      <p>© 2026 Helen Hsieh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ══ Design trail lightbox ══
+const lightboxData = [
+  {type:'image', src:'../img/gomaji-process/process-2-background.jpg', alt:'Gomaji City Park campaign background and goals', caption:'Campaign Background · Promoting the new brand visuals and spirit, weaving in a "city" and "park" theme alongside the new mascot character, Maji Friend'},
+  {type:'image', src:'../img/gomaji-process/process-3-designspec.jpg', alt:'Gomaji City Park web design specification', caption:'Design Spec · Target audience, a 5-color system, and desktop/mobile layout planning — slogan delivered via a speech-bubble motif paired with brand graphics'},
+  {type:'image', src:'../img/gomaji-process/process-4-extension.jpg', alt:'Gomaji City Park brand extension into on-site physical materials', caption:'Physical Extension · Key visual extended to invitation cards and banners, then built out as on-site backdrops, flags, and physical signage'},
+  {type:'video', src:'https://www.youtube.com/embed/7Y2rm-JwWdo?si=c58YTBgMSFFmYaof', title:'Event highlights video', caption:'Event Highlights · 858 buyers purchased 5,000+ coupons at a redemption rate near 80%, 42 vendor booths participated in redemption, app sign-ups hit a yearly high, and the promo video passed 10,000+ views'}
+];
+
+const lightbox        = document.getElementById('lightbox');
+const lightboxStage    = document.getElementById('lightboxStage');
+const lightboxCaption  = document.getElementById('lightboxCaption');
+const lightboxCloseBtn = document.getElementById('lightboxClose');
+const lightboxPrevBtn  = document.getElementById('lightboxPrev');
+const lightboxNextBtn  = document.getElementById('lightboxNext');
+let lightboxIndex = 0;
+let lightboxLastFocused = null;
+
+function renderLightbox() {
+  const item = lightboxData[lightboxIndex];
+  lightboxStage.innerHTML = item.type === 'image'
+    ? `<img src="${item.src}" alt="${item.alt}">`
+    : `<iframe src="${item.src}" title="${item.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  lightboxCaption.textContent = item.caption;
+}
+
+function openLightbox(index) {
+  lightboxLastFocused = document.activeElement;
+  lightboxIndex = index;
+  renderLightbox();
+  lightbox.hidden = false;
+  requestAnimationFrame(() => lightbox.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  lightboxCloseBtn.focus();
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightbox.hidden = true; lightboxStage.innerHTML = ''; }, 300);
+  if (lightboxLastFocused) lightboxLastFocused.focus();
+}
+
+function showRelative(delta) {
+  lightboxIndex = (lightboxIndex + delta + lightboxData.length) % lightboxData.length;
+  renderLightbox();
+}
+
+document.querySelectorAll('.process-trigger').forEach((btn, i) => {
+  btn.addEventListener('click', () => openLightbox(i));
+});
+lightboxCloseBtn.addEventListener('click', closeLightbox);
+lightboxPrevBtn.addEventListener('click', () => showRelative(-1));
+lightboxNextBtn.addEventListener('click', () => showRelative(1));
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+window.addEventListener('keydown', e => {
+  if (lightbox.hidden) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showRelative(-1);
+  if (e.key === 'ArrowRight') showRelative(1);
+});
+lightbox.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const focusable = [lightboxPrevBtn, lightboxNextBtn, lightboxCloseBtn];
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puli Brewery AI Navigation System | Helen Hsieh</title>
+<meta name="description" content="A unified, cross-device design system built for a century-old brewery — one visual language spanning mobile, kiosk, AR, and 360° experiences across 13 sites and 4 languages, shipped in 90 working days.">
+<meta property="og:title" content="Puli Brewery AI Navigation System | Helen Hsieh">
+<meta property="og:description" content="A unified, cross-device design system built for a century-old brewery — mobile, kiosk, AR, and 360° experiences across 13 sites and 4 languages, shipped in 90 working days.">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/puli.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#B97D86; --accent-solid:#8B2635; --accent-wash:rgba(139,38,53,.09); --accent-glow:rgba(139,38,53,.38);}
+.onsite-photos-wide{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.onsite-photos-wide .onsite-photo{aspect-ratio:3/2;}
+.onsite-photos-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.onsite-photos-grid3 .onsite-photo{aspect-ratio:3/4;}
+@media(max-width:760px){
+  .onsite-photos-wide{grid-template-columns:1fr;}
+  .onsite-photos-grid3{grid-template-columns:1fr 1fr;}
+}
+
+.process-diagram-wrap{padding:0 var(--page-x) 100px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.process-diagram-frame{background:#EAE3D3;padding:20px;border-radius:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+.process-diagram-label{display:block;margin-bottom:14px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(139,38,53,.6);}
+.process-diagram-trigger{position:relative;display:block;width:100%;}
+.process-diagram-trigger img{width:100%;display:block;}
+.process-lens{position:absolute;width:220px;height:220px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 6px rgba(201,168,76,.1);background-repeat:no-repeat;z-index:5;}
+.process-diagram-trigger:hover .process-lens{opacity:1;}
+.process-diagram-hint{margin-top:12px;font-size:10px;letter-spacing:.1em;color:rgba(240,237,230,.4);}
+@media(max-width:900px){
+  .process-diagram-wrap{grid-template-columns:1fr;}
+  .process-lens{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">Chinese CV</a>
+    </div>
+  </details>
+</nav>
+
+<section class="detail-hero">
+  <img src="../img/puli.jpg" alt="Puli Brewery AI Navigation System key visual">
+  <div class="detail-hero-overlay"></div>
+  <div class="detail-hero-content">
+    <a href="../index.html#works" class="detail-back">← BACK TO ARCHIVE</a>
+    <span class="detail-tag"><i class="detail-tag-dot"></i>AI NAVIGATION · CROSS-DEVICE DESIGN SYSTEM · 2024—2025</span>
+    <h1 class="detail-title">Puli Brewery<br>AI Navigation System</h1>
+    <a href="https://puli-brewery.omniguider.com/home/" target="_blank" rel="noopener" class="detail-live-btn">VISIT LIVE SITE ↗</a>
+  </div>
+</section>
+
+<div class="detail-body">
+  <div class="detail-meta">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Client</div>
+      <div class="detail-meta-value">Puli Brewery (Taiwan Tobacco &amp; Liquor Corp.)</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Role</div>
+      <div class="detail-meta-value">UI/UX Design, User Journey Mapping, Design System Governance</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Timeline</div>
+      <div class="detail-meta-value">Dec 2024 – Apr 2025 · 90 working days</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Tools</div>
+      <div class="detail-meta-value">Figma · Zeplin · User Flow · Prototype</div>
+    </div>
+  </div>
+
+  <div class="detail-main">
+    <p class="detail-lede">Shipped in 90 working days: one cross-device design system for a century-old brewery — unifying mobile, kiosk, AR, and 360° experiences across 13 sites and 4 languages, so every visitor gets the same quality of experience regardless of how they walk in.</p>
+
+    <div class="detail-stats">
+      <div><div class="detail-stat-num">13</div><div class="detail-stat-label">Tour Sites</div></div>
+      <div><div class="detail-stat-num">4</div><div class="detail-stat-label">Languages</div></div>
+      <div><div class="detail-stat-num">3</div><div class="detail-stat-label">Device Entry Points</div></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Challenge</h4>
+      <p>The brewery's grounds are large and the circulation complex, and visitors span a wide range of generations and nationalities with very different expectations of what a "tour" should feel like. The core challenge was designing a single system that could serve independent travelers on mobile, tour groups on kiosk, and walk-ins scanning a QR code — without fragmenting into three disconnected products.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Approach</h4>
+      <p>I started from the user journey — on-site field research to map circulation and dwell behavior across all 13 sites — then built a design system that could apply consistently across devices: shared interface standards and components for the mobile, kiosk, and QR-code entry points, extending the same hand-drawn map style into AR navigation and 360° panoramas, and structuring content across 4 languages (Chinese, English, Japanese, Korean) so the visual language and experience stayed consistent everywhere. I worked directly with the engineering team through iteration cycles (UI v1 → v2) to keep the component spec buildable, not just pretty.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Outcome</h4>
+      <p>The project launched in 90 working days, giving the brewery a single design system that serves visitors across languages and devices. The componentized spec also means new sites or languages can be added quickly without breaking consistency — the system scales, not just the launch.</p>
+    </div>
+  </div>
+</div>
+
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SELECTED SCREENS · AI TOUR SYSTEM</span>
+    <h3 class="onsite-title">Selected Screens<br><em>Inside the Experience.</em></h3>
+    <p class="onsite-desc">From the hand-drawn park map to floor navigation, the AI tour guide, and 360° panorama exploration — these are the actual screens visitors use inside Puli Brewery.</p>
+  </div>
+</section>
+
+<div class="mockup-marquee">
+  <div class="mockup-track">
+    <div class="mockup-shot"><img src="../img/puli-mockup/mockup-1.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-2.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-3.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-4.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-5.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-6.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-7.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-1.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-2.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-3.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-4.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-5.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-6.png" alt="Puli Brewery AI tour device screen"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-7.png" alt="Puli Brewery AI tour device screen"></div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · FROM PROPOSAL TO SYSTEM</span>
+    <h3 class="onsite-title">Design Process<br><em>From Proposal to System.</em></h3>
+    <p class="onsite-desc">From the original bid proposal and wireframes to iterated UI and a multilingual component library — the full design process behind the Puli Brewery navigation system, from concept to production.</p>
+  </div>
+</section>
+
+<div class="process-diagram-wrap">
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">WIREFRAME_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger1">
+      <img src="../img/puli-onsite/wireframe.png" alt="Puli Brewery navigation system wireframe" id="processImg1" loading="lazy">
+      <div class="process-lens" id="processLens1"></div>
+    </div>
+    <p class="process-diagram-hint">Interface structure wireframe</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">PROPOSAL_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger0">
+      <img src="../img/puli-onsite/bid.png" alt="Puli Brewery bid proposal design reference" id="processImg0" loading="lazy">
+      <div class="process-lens" id="processLens0"></div>
+    </div>
+    <p class="process-diagram-hint">Bid proposal stage · interface design pitch</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">ITERATION_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger2">
+      <img src="../img/puli-onsite/ui.png" alt="Puli Brewery UI v1 handoff and v2 revision cycle" id="processImg2" loading="lazy">
+      <div class="process-lens" id="processLens2"></div>
+    </div>
+    <p class="process-diagram-hint">UI v1 → v2 · iterating design directly with engineering</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">COMPONENTS_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger3">
+      <img src="../img/puli-onsite/components.png" alt="Puli Brewery navigation system component library spec" id="processImg3" loading="lazy">
+      <div class="process-lens" id="processLens3"></div>
+    </div>
+    <p class="process-diagram-hint">Multilingual component library spec</p>
+  </div>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · PULI BREWERY · 2024–2025</span>
+    <h3 class="onsite-title">On-Site<br><em>On the Grounds.</em></h3>
+    <p class="onsite-desc">Field photos from the Puli Brewery grounds, including the walk-in QR-code entry point in real use.</p>
+  </div>
+
+  <div class="onsite-photos-wide">
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-1.JPG" alt="Puli Brewery park entrance with the navigation app map in use" loading="lazy">
+      <span class="onsite-caption">Park entrance · navigation app map in use</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-2.JPG" alt="Puli Brewery QR code scan signage, the walk-in entry point" loading="lazy">
+      <span class="onsite-caption">QR code signage · walk-in entry point</span>
+    </div>
+  </div>
+
+  <div class="onsite-photos-grid3">
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-3.JPG" alt="Puli Brewery flagship hall entrance and signage" loading="lazy">
+      <span class="onsite-caption">Flagship hall entrance circulation</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-4.JPG" alt="Puli Brewery display wall with century-old liquor jars" loading="lazy">
+      <span class="onsite-caption">Display wall · century-old liquor jars</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-5.JPG" alt="Puli Brewery liquor jar tunnel walkway" loading="lazy">
+      <span class="onsite-caption">Liquor jar tunnel · a moment on the grounds</span>
+    </div>
+  </div>
+</section>
+
+<a href="foxconn.html" class="detail-nextlink">
+  <div>
+    <div class="detail-nextlink-label">Next Case</div>
+    <div class="detail-nextlink-title">Foxconn Carnival · Navigation System</div>
+  </div>
+  <span class="detail-nextlink-arrow">→</span>
+</a>
+
+<footer id="contact">
+  <div class="footer-left">
+    <div class="section-eyebrow" style="margin-bottom:12px;">
+      <div class="cross"><div class="cross-dot"></div></div>
+      <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
+    </div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <div class="footer-info">
+      <p class="name">Helen Hsieh 謝孟庭</p>
+      <p>UI/UX Designer</p>
+      <p>Taipei, Taiwan · Open to remote &amp; overseas roles</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
+      <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-col">
+      <h4>Archive_Metadata</h4>
+      <p>© 2026 Helen Hsieh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ══ Design process magnifier ══
+const processData = [
+  {src:'../img/puli-onsite/bid.png', alt:'Puli Brewery bid proposal design reference'},
+  {src:'../img/puli-onsite/wireframe.png', alt:'Puli Brewery navigation system wireframe'},
+  {src:'../img/puli-onsite/ui.png', alt:'Puli Brewery UI v1 handoff and v2 revision cycle'},
+  {src:'../img/puli-onsite/components.png', alt:'Puli Brewery navigation system component library spec'}
+];
+const PROCESS_LENS_SIZE = 220;
+const PROCESS_LENS_ZOOM = 3;
+processData.forEach((item, i) => {
+  const trigger = document.getElementById('processTrigger' + i);
+  const lens = document.getElementById('processLens' + i);
+  const img = document.getElementById('processImg' + i);
+  lens.style.backgroundImage = `url('${item.src}')`;
+  trigger.addEventListener('mousemove', e => {
+    const rect = img.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    x = Math.max(0, Math.min(x, rect.width));
+    y = Math.max(0, Math.min(y, rect.height));
+    lens.style.left = (x - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.top  = (y - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.backgroundSize = (rect.width * PROCESS_LENS_ZOOM) + 'px ' + (rect.height * PROCESS_LENS_ZOOM) + 'px';
+    lens.style.backgroundPosition = `-${x * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px -${y * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px`;
+  });
+});
+</script>
+</body>
+</html>

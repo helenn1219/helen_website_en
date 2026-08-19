@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuan Ben Shan Campaign · Interactive Demo | Helen Hsieh</title>
+<meta name="description" content="Yuan Ben Shan brand interactive campaign site, a UI/UX design and front-end build by Helen Hsieh.">
+<meta property="og:title" content="Yuan Ben Shan Campaign · Interactive Demo | Helen Hsieh">
+<meta property="og:description" content="Yuan Ben Shan brand interactive campaign site, a UI/UX design and front-end build by Helen Hsieh.">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/yuanbenshan-mockup.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.viewer-wrap{max-width:1100px;margin:0 auto;padding:120px 6vw 100px;}
+.viewer-back{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,237,230,.6);text-decoration:none;margin-bottom:32px;transition:color .3s;}
+.viewer-back:hover{color:var(--gold);}
+.viewer-header{margin-bottom:48px;max-width:640px;}
+.viewer-tag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.viewer-title{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:400;margin-bottom:16px;}
+.viewer-desc{font-size:14px;line-height:1.85;color:rgba(240,237,230,.6);}
+.viewer-stage{display:flex;justify-content:center;padding:20px 0;}
+.viewer-phone{position:relative;width:390px;max-width:92vw;height:760px;border-radius:44px;background:#000;border:8px solid #1a1a1a;box-shadow:0 40px 80px -20px rgba(0,0,0,.7);overflow:hidden;}
+.viewer-phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:24px;background:#000;border-radius:0 0 16px 16px;z-index:2;}
+.viewer-phone iframe{width:100%;height:100%;border:0;background:#fff;}
+.viewer-note{max-width:640px;margin:40px auto 0;text-align:center;font-size:12px;color:rgba(240,237,230,.4);line-height:1.8;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="../index.html#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">Chinese CV</a>
+    </div>
+  </details>
+</nav>
+
+<div class="viewer-wrap">
+  <a href="../index.html#explorations" class="viewer-back">← BACK TO ARCHIVE</a>
+  <div class="viewer-header">
+    <span class="viewer-tag">FRONT-END · LIFF LANDING PAGE · INTERACTIVE DEMO</span>
+    <h1 class="viewer-title">Yuan Ben Shan<br>Campaign Site</h1>
+    <p class="viewer-desc">Built the front end for this campaign site, handling the interface and form-validation logic for e-invoice, paper invoice, and cloud-invoice-carrier registration flows, plus a live-preview photo upload feature for invoice submissions. Below is a working demo — click through to try the actual screen transitions and interactions.</p>
+  </div>
+
+  <div class="viewer-stage">
+    <div class="viewer-phone">
+      <iframe src="yuanbenshan/index.html" title="Yuan Ben Shan Campaign Interactive Demo"></iframe>
+    </div>
+  </div>
+
+  <p class="viewer-note">Interactive Demo · Form submission is a static demonstration, not connected to real validation or a backend database — provided as a reference for interaction flow and front-end build quality. Note: the embedded flow itself is a Taiwan e-invoice registration form and remains in Chinese, since it mirrors a real local system.</p>
+</div>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+</script>
+</body>
+</html>
