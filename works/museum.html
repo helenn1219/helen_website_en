@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Museum of History AR Experience | Helen Hsieh</title>
+<meta name="description" content="An outdoor AR experience designed for the reopened National Museum of History — turning a courtyard into a gamified exploration space, guided by a mascot character unlocking each visitor's own museum journey.">
+<meta property="og:title" content="National Museum of History AR Experience | Helen Hsieh">
+<meta property="og:description" content="An outdoor AR experience for the reopened National Museum of History, turning a courtyard into a gamified exploration space.">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/museum.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#808B81; --accent-solid:#2C3E2D; --accent-wash:rgba(44,62,45,.09); --accent-glow:rgba(44,62,45,.38);}
+
+.flow-diagram-wrap{padding:0 var(--page-x) 100px;}
+.flow-diagram-frame{background:#EAE3D3;padding:20px;border-radius:10px;box-shadow:0 40px 70px -24px rgba(0,0,0,.55);}
+.flow-diagram-label{display:block;margin-bottom:10px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(44,62,45,.55);}
+.flow-diagram-trigger{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;}
+.flow-diagram-trigger img{width:100%;display:block;}
+.flow-diagram-trigger:focus-visible{outline:1px solid var(--accent-solid,var(--gold));outline-offset:4px;}
+.flow-lens{position:absolute;width:240px;height:240px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 6px rgba(201,168,76,.1);background-repeat:no-repeat;z-index:5;}
+.flow-diagram-trigger:hover .flow-lens{opacity:1;}
+.flow-diagram-hint{margin-top:-10px;font-size:10px;letter-spacing:.1em;color:rgba(240,237,230,.4);}
+@media(max-width:900px){.flow-lens{display:none;}}
+@media(max-width:760px){.flow-diagram-frame{padding:16px;}}
+
+.onsite-photos-row3{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;}
+.onsite-photos-row3 .onsite-photo{aspect-ratio:3/4;}
+@media(max-width:760px){
+  .onsite-photos-row3{grid-template-columns:1fr 1fr;}
+}
+
+.onsite-videos{grid-template-columns:repeat(3,1fr);}
+@media(max-width:760px){.onsite-videos{grid-template-columns:1fr;}}
+
+.level-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:0 var(--page-x) 100px;}
+.level-card{display:flex;flex-direction:column;gap:8px;}
+.level-img{border-radius:12px;overflow:hidden;background:var(--bg-mid);margin-bottom:8px;}
+.level-img img{display:block;width:100%;height:auto;}
+.level-tag{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent,var(--gold));}
+.level-title{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:400;line-height:1.3;}
+.level-title-en{font-size:13px;color:rgba(240,237,230,.4);font-style:italic;}
+.level-desc{font-size:14px;line-height:1.7;color:rgba(240,237,230,.6);}
+@media(max-width:900px){.level-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.level-grid{grid-template-columns:1fr;}}
+
+.flow-lightbox{position:fixed;inset:0;z-index:200;background:rgba(6,8,10,.94);display:flex;align-items:center;justify-content:center;padding:80px var(--page-x);opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.flow-lightbox.open{opacity:1;pointer-events:auto;}
+.flow-lightbox[hidden]{display:none;}
+.flow-lightbox-stage{width:100%;height:100%;overflow:auto;background:#fff;}
+.flow-lightbox-stage img{display:block;width:2400px;max-width:none;height:auto;}
+.flow-lightbox-close{position:absolute;top:28px;right:var(--page-x);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(240,237,230,.25);background:rgba(13,17,20,.6);color:var(--text);cursor:pointer;transition:border-color .3s,color .3s;}
+.flow-lightbox-close:hover{border-color:var(--accent,var(--gold));color:var(--accent,var(--gold));}
+.flow-lightbox-hint{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:11px;letter-spacing:.08em;color:rgba(240,237,230,.55);pointer-events:none;}
+@media(max-width:760px){
+  .flow-lightbox{padding:64px 16px;}
+  .flow-lightbox-stage img{width:1400px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">Chinese CV</a>
+    </div>
+  </details>
+</nav>
+
+<section class="detail-hero">
+  <img src="../img/museum.jpg" alt="National Museum of History AR experience key visual">
+  <div class="detail-hero-overlay"></div>
+  <div class="detail-hero-content">
+    <a href="../index.html#works" class="detail-back">← BACK TO ARCHIVE</a>
+    <span class="detail-tag"><i class="detail-tag-dot"></i>AR EXPERIENCE · MUSEUM TECH · 2024</span>
+    <h1 class="detail-title">National Museum<br>of History AR Experience</h1>
+
+  </div>
+</section>
+
+<div class="detail-body">
+  <div class="detail-meta">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Client</div>
+      <div class="detail-meta-value">National Museum of History</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Role</div>
+      <div class="detail-meta-value">UI/UX Design, Gamified Experience Planning, Feature Module Extension</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Timeline</div>
+      <div class="detail-meta-value">Oct 2024 – Apr 2025</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Tools</div>
+      <div class="detail-meta-value">Figma · Prototype · User Flow</div>
+    </div>
+  </div>
+
+  <div class="detail-main">
+    <p class="detail-lede">An outdoor AR experience designed for the newly reopened National Museum of History, turning the courtyard into a gamified exploration space — led by a mascot character who guides visitors through unlocking their own museum journey, one corner at a time.</p>
+
+    <div class="detail-stats">
+      <div><div class="detail-stat-num">4</div><div class="detail-stat-label">AR Interactive Levels</div></div>
+      <div><div class="detail-stat-num">6</div><div class="detail-stat-label">Hidden AR Discovery Points</div></div>
+      <div><div class="detail-stat-num">1</div><div class="detail-stat-label">Mascot Character</div></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Challenge</h4>
+      <p>After reopening, the museum wanted its outdoor courtyard to be more than a pass-through space — a place where families and younger visitors would actually want to stop and engage — without disrupting the dignified atmosphere befitting its collection and architecture.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Approach</h4>
+      <p>I designed 4 AR interactive levels led by a mascot guide character, letting visitors unlock each corner of the courtyard in sequence, and took on the museum's existing app feature-module extension requirements so the new experience would integrate naturally into the system already in place, rather than shipping as a bolted-on separate app.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Outcome</h4>
+      <p>The courtyard went from a pure circulation space to somewhere visitors actively chose to stop and engage: the 4 AR levels and 6 hidden discovery points gave people a clear reason to explore, while preserving the dignified atmosphere around the collection and architecture — hitting both original goals and putting the museum's cultural content in front of a younger generation in a lighter, more interactive way.</p>
+    </div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>THE FOUR LEVELS · AR EXPERIENCE</span>
+    <h3 class="onsite-title">The Four AR Levels<br><em>Four Ways to Explore.</em></h3>
+    <p class="onsite-desc">The outdoor mascot adventure spans three outdoor levels — koi, photo, and lantern — plus one indoor hidden-discovery level, with the mascot guiding visitors through unlocking every corner of the courtyard.</p>
+  </div>
+</section>
+
+<div class="level-grid">
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-1-crop.png" alt="Catch the Koi AR level screen" loading="lazy"></div>
+    <span class="level-tag">01 · OUTDOOR AR</span>
+    <h4 class="level-title">Catch the Koi<br><em class="level-title-en">Catch the Koi</em></h4>
+    <p class="level-desc">Use AR to net koi and birds swimming through the courtyard pond — tap to collect good-luck cards.</p>
+  </div>
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-2-crop.png" alt="Group Photo AR level screen" loading="lazy"></div>
+    <span class="level-tag">02 · OUTDOOR AR</span>
+    <h4 class="level-title">Group Photo<br><em class="level-title-en">Group Photo</em></h4>
+    <p class="level-desc">AR photo compositing — pose alongside the mascot character and collage the shots as a keepsake.</p>
+  </div>
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-3-crop.png" alt="Release a Wish AR lantern level screen" loading="lazy"></div>
+    <span class="level-tag">03 · OUTDOOR AR</span>
+    <h4 class="level-title">Release a Wish<br><em class="level-title-en">Release a Wish</em></h4>
+    <p class="level-desc">Draw and release an AR sky lantern — sketch a pattern or write a wish, then watch it drift skyward.</p>
+  </div>
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-4-crop.png" alt="Hidden Discovery AR magnifying-glass level screen" loading="lazy"></div>
+    <span class="level-tag">04 · INDOOR AR</span>
+    <h4 class="level-title">Hidden Discovery<br><em class="level-title-en">Hidden Discovery</em></h4>
+    <p class="level-desc">An AR magnifying-glass search — walk through each corner of the courtyard to find hidden artifact info points.</p>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SELECTED SCREENS · AR EXPERIENCE</span>
+    <h3 class="onsite-title">Selected Screens<br><em>Inside the Experience.</em></h3>
+    <p class="onsite-desc">From the courtyard entrance to all four AR levels — the actual screens as the mascot guides visitors through the National Museum of History.</p>
+  </div>
+</section>
+
+<div class="mockup-marquee">
+  <div class="mockup-track">
+    <div class="mockup-shot"><img src="../img/museum-mockup/mockup-1.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-2.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-3.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-4.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-5.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-6.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-7.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-8.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-9.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-10.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-11.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-1.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-2.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-3.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-4.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-5.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-6.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-7.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-8.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-9.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-10.webp" alt="National Museum of History AR experience device screen"></div><div class="mockup-shot"><img src="../img/museum-mockup/mockup-11.webp" alt="National Museum of History AR experience device screen"></div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · USER FLOW</span>
+    <h3 class="onsite-title">User Journey<br><em>Mapping the Journey.</em></h3>
+    <p class="onsite-desc">The full user flow diagram for the mascot's AR guide levels, covering the branching logic across "guided / free exploration / hidden discovery" modes and the transitions between every screen.</p>
+  </div>
+</section>
+
+<div class="flow-diagram-wrap">
+  <div class="flow-diagram-frame">
+    <span class="flow-diagram-label">WIREFLOW_REF // AR MASCOT GUIDE</span>
+    <button class="flow-diagram-trigger" id="flowTrigger" aria-label="Enlarge user flow diagram">
+      <img src="../img/museum-flow.png" alt="National Museum of History AR experience mascot guide user flow diagram" id="flowThumb" loading="lazy">
+      <div class="flow-lens" id="flowLens"></div>
+    </button>
+    <p class="flow-diagram-hint">Move your cursor to preview detail · click to view full size</p>
+  </div>
+</div>
+
+<div class="flow-lightbox" id="flowLightbox" role="dialog" aria-modal="true" aria-label="User flow diagram enlarged preview" hidden>
+  <button class="flow-lightbox-close" id="flowLightboxClose" aria-label="Close">✕</button>
+  <div class="flow-lightbox-stage">
+    <img src="../img/museum-flow.png" alt="National Museum of History AR experience mascot guide user flow diagram">
+  </div>
+  <p class="flow-lightbox-hint">Scroll or drag to view the full flow diagram in detail</p>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · NATIONAL MUSEUM OF HISTORY · 2024–2025</span>
+    <h3 class="onsite-title">On-Site<br><em>In the Courtyard.</em></h3>
+    <p class="onsite-desc">Photos from the museum's outdoor courtyard, plus walkthrough recordings of the AR experience live in use.</p>
+  </div>
+
+  <div class="onsite-photos-row3">
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-1-ar-menu.jpg" alt="AR exploration menu in use beside a courtyard sculpture" loading="lazy">
+      <span class="onsite-caption">AR exploration menu · in use beside a courtyard sculpture</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-2-app-fish.jpg" alt="Catching the interactive koi and receiving a blessing card" loading="lazy">
+      <span class="onsite-caption">Catching the interactive koi · receiving a blessing card</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-4-ar-photo-complete.jpg" alt="Completed mascot group photo collage" loading="lazy">
+      <span class="onsite-caption">Mascot group photo · completed collage</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-5-ar-lantern.jpg" alt="Releasing an AR sky lantern" loading="lazy">
+      <span class="onsite-caption">Release a Wish · AR sky lantern release</span>
+    </div>
+  </div>
+
+  <div class="onsite-videos">
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-museum-onsite.jpg" playsinline>
+        <source src="../video/museum-onsite.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">Event Highlights</span>
+    </div>
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-museum-mascot-demo.jpg" playsinline>
+        <source src="../video/museum-mascot-demo.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">Group Photo Live Walkthrough</span>
+    </div>
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-museum-lantern-demo.jpg" playsinline>
+        <source src="../video/museum-light-demo.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">Release a Wish · Drawing to Release Walkthrough</span>
+    </div>
+  </div>
+</section>
+
+<a href="gomaji.html" class="detail-nextlink">
+  <div>
+    <div class="detail-nextlink-label">Next Case</div>
+    <div class="detail-nextlink-title">Gomaji City Park · Campaign Site</div>
+  </div>
+  <span class="detail-nextlink-arrow">→</span>
+</a>
+
+<footer id="contact">
+  <div class="footer-left">
+    <div class="section-eyebrow" style="margin-bottom:12px;">
+      <div class="cross"><div class="cross-dot"></div></div>
+      <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
+    </div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <div class="footer-info">
+      <p class="name">Helen Hsieh 謝孟庭</p>
+      <p>UI/UX Designer</p>
+      <p>Taipei, Taiwan · Open to remote &amp; overseas roles</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
+      <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-col">
+      <h4>Archive_Metadata</h4>
+      <p>© 2026 Helen Hsieh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ══ User flow diagram: magnifier preview ══
+const flowThumb = document.getElementById('flowThumb');
+const flowLens  = document.getElementById('flowLens');
+const LENS_SIZE = 240;
+const LENS_ZOOM = 3;
+flowLens.style.backgroundImage = "url('../img/museum-flow.png')";
+function moveFlowLens(e) {
+  const rect = flowThumb.getBoundingClientRect();
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
+  x = Math.max(0, Math.min(x, rect.width));
+  y = Math.max(0, Math.min(y, rect.height));
+  flowLens.style.left = (x - LENS_SIZE / 2) + 'px';
+  flowLens.style.top  = (y - LENS_SIZE / 2) + 'px';
+  flowLens.style.backgroundSize = (rect.width * LENS_ZOOM) + 'px ' + (rect.height * LENS_ZOOM) + 'px';
+  flowLens.style.backgroundPosition = `-${x * LENS_ZOOM - LENS_SIZE / 2}px -${y * LENS_ZOOM - LENS_SIZE / 2}px`;
+}
+document.getElementById('flowTrigger').addEventListener('mousemove', moveFlowLens);
+
+// ══ User flow diagram lightbox ══
+const flowTrigger      = document.getElementById('flowTrigger');
+const flowLightbox     = document.getElementById('flowLightbox');
+const flowLightboxClose = document.getElementById('flowLightboxClose');
+let flowLastFocused = null;
+
+function openFlowLightbox() {
+  flowLastFocused = document.activeElement;
+  flowLightbox.hidden = false;
+  requestAnimationFrame(() => flowLightbox.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  flowLightboxClose.focus();
+}
+function closeFlowLightbox() {
+  flowLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { flowLightbox.hidden = true; }, 300);
+  if (flowLastFocused) flowLastFocused.focus();
+}
+flowTrigger.addEventListener('click', openFlowLightbox);
+flowLightboxClose.addEventListener('click', closeFlowLightbox);
+flowLightbox.addEventListener('click', e => { if (e.target === flowLightbox) closeFlowLightbox(); });
+window.addEventListener('keydown', e => { if (!flowLightbox.hidden && e.key === 'Escape') closeFlowLightbox(); });
+</script>
+</body>
+</html>

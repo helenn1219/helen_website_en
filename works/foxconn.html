@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 Foxconn Carnival Navigation App | Helen Hsieh</title>
+<meta name="description" content="A navigation app for 35,000 Foxconn employees and family members at the Taipei Dome, designed accessibility-first so everyone in a large, complex venue could find their way with confidence.">
+<meta property="og:title" content="2025 Foxconn Carnival Navigation App | Helen Hsieh">
+<meta property="og:description" content="A navigation app for 35,000 Foxconn employees and family members at the Taipei Dome, designed accessibility-first.">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/foxconn.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#6683B7; --accent-solid:#003087; --accent-wash:rgba(0,48,135,.09); --accent-glow:rgba(0,48,135,.38);}
+.web-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 var(--page-x) 100px;}
+.web-item img{width:100%;aspect-ratio:1436/856;object-fit:cover;display:block;border:1px solid var(--border-dim);filter:grayscale(.1);}
+.web-caption{margin-top:10px;font-size:11px;letter-spacing:.05em;line-height:1.6;color:rgba(240,237,230,.5);}
+@media(max-width:760px){.web-grid{grid-template-columns:1fr;padding:0 var(--page-x) 56px;}}
+.access-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:920px;margin:0 auto;padding:0 var(--page-x) 100px;}
+.level-card{display:flex;flex-direction:column;gap:8px;}
+.level-img{border-radius:12px;overflow:hidden;background:var(--bg-mid);margin-bottom:8px;}
+.level-img img{display:block;width:100%;height:auto;}
+.level-tag{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent,var(--gold));}
+.level-title{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:400;line-height:1.3;}
+.level-title-en{font-size:13px;color:rgba(240,237,230,.4);font-style:italic;}
+.level-desc{font-size:14px;line-height:1.7;color:rgba(240,237,230,.6);}
+@media(max-width:600px){.access-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">Chinese CV</a>
+    </div>
+  </details>
+</nav>
+
+<section class="detail-hero">
+  <img src="../img/foxconn.jpg" alt="Foxconn Carnival navigation system key visual">
+  <div class="detail-hero-overlay"></div>
+  <div class="detail-hero-content">
+    <a href="../index.html#works" class="detail-back">← BACK TO ARCHIVE</a>
+    <span class="detail-tag"><i class="detail-tag-dot"></i>MOBILE APP · WAYFINDING · LARGE-SCALE · 2025</span>
+    <h1 class="detail-title">2025 Foxconn Carnival<br>Navigation App</h1>
+    <a href="https://omnig-anyplace-foxconn.omniguider.com/arena/" target="_blank" rel="noopener" class="detail-live-btn">VISIT LIVE SITE ↗</a>
+  </div>
+</section>
+
+<div class="detail-body">
+  <div class="detail-meta">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Client</div>
+      <div class="detail-meta-value">Hongtu Co., Ltd. (a Foxconn Technology Group subsidiary)</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Role</div>
+      <div class="detail-meta-value">Led UI/UX Design, User Journey Mapping, Interface Spec</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Timeline</div>
+      <div class="detail-meta-value">Sep 2024 – Dec 2024</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Tools</div>
+      <div class="detail-meta-value">Figma · Zeplin · Wireframe · User Research</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Platform</div>
+      <div class="detail-meta-value">Mobile App (embedded in Foxconn Group's employee app) · iOS / Android</div>
+    </div>
+  </div>
+
+  <div class="detail-main">
+    <p class="detail-lede">Served 35,000 employees and family members. An annual carnival navigation app for Foxconn Technology Group, embedded directly inside the group's internal employee app. Designed accessibility-first, I independently owned the full mobile design cycle — from information architecture and user flow to high-fidelity UI — so everyone in a large, complex venue could find their way with confidence.</p>
+
+    <div class="detail-stats">
+      <div><div class="detail-stat-num">35,000+</div><div class="detail-stat-label">Users Served</div></div>
+      <div><div class="detail-stat-num">7</div><div class="detail-stat-label">Floors Covered at the Dome</div></div>
+      <div><div class="detail-stat-num">Multi</div><div class="detail-stat-label">Department POI Zoning System</div></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Challenge</h4>
+      <p>The Taipei Dome has many floors and interlocking circulation paths, and event-day crowds are dense. Employees and family members — including elderly attendees and children — all needed a wayfinding experience they could understand at a glance, while accessibility needs had to be built in from the start, not bolted on.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Approach</h4>
+      <p>I led the user journey planning and interface spec, building a color-coded department zoning system and a shared component library that simplified a genuinely complex venue information architecture into a visual language people could read at a glance — and kept the navigation experience consistent between the app and the web version. Since most of the Dome's on-site circulation is stair-based, I built a "walking / accessible" dual-mode toggle directly into route planning, so wheelchair users get a dedicated accessible path — accessibility wasn't a feature bolted on, it was a core design constraint running through the whole system.</p>
+    </div>
+    <div class="detail-section">
+      <h4>Outcome</h4>
+      <p>The app served over 35,000 users, carrying the on-site navigation load for Foxconn Technology Group's flagship annual carnival. It also left behind a reusable, extensible large-venue navigation design system for future events of the same scale.</p>
+    </div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SELECTED SCREENS · NAVIGATION APP</span>
+    <h3 class="onsite-title">Selected Screens<br><em>Finding the Way.</em></h3>
+    <p class="onsite-desc">From route planning to cross-floor navigation — the actual mobile and web screens from the Foxconn Carnival navigation app, including the "walking / accessible" dual-mode toggle.</p>
+  </div>
+</section>
+
+<div class="mockup-marquee">
+  <div class="mockup-track">
+    <div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-1.png" alt="Foxconn Carnival app location search results list"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-2.png" alt="Foxconn Carnival app location search empty state"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-3.png" alt="Foxconn Carnival app category filter and POI cards"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-4.png" alt="Foxconn Carnival app POI detail information"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-5.png" alt="Foxconn Carnival app route planning input screen"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-6.png" alt="Foxconn Carnival app select starting point prompt"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-7.png" alt="Foxconn Carnival app walking/accessible route planning and simulated navigation"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-1.png" alt="Foxconn Carnival app location search results list"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-2.png" alt="Foxconn Carnival app location search empty state"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-3.png" alt="Foxconn Carnival app category filter and POI cards"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-4.png" alt="Foxconn Carnival app POI detail information"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-5.png" alt="Foxconn Carnival app route planning input screen"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-6.png" alt="Foxconn Carnival app select starting point prompt"></div><div class="mockup-shot"><img src="../img/foxconn-mockup/mockup-7.png" alt="Foxconn Carnival app walking/accessible route planning and simulated navigation"></div>
+  </div>
+</div>
+
+<div class="web-grid">
+  <div class="web-item">
+    <img src="../img/foxconn-mockup/web-1-crop.png" alt="Foxconn Carnival web version full venue map of the Taipei Dome" loading="lazy">
+    <p class="web-caption">Web version · Full venue map of the Taipei Dome</p>
+  </div>
+  <div class="web-item">
+    <img src="../img/foxconn-mockup/web-3-crop.png" alt="Foxconn Carnival web version walking/accessible mode toggle" loading="lazy">
+    <p class="web-caption">Web version · Walking / accessible dual-mode toggle</p>
+  </div>
+  <div class="web-item">
+    <img src="../img/foxconn-mockup/web-4-crop.png" alt="Foxconn Carnival web version POI detail card" loading="lazy">
+    <p class="web-caption">Web version · POI detail information card</p>
+  </div>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · TAIPEI DOME · 2025.01.24</span>
+    <h3 class="onsite-title">On-Site<br><em>Live at the Dome.</em></h3>
+    <p class="onsite-desc">On January 24, 2025, Foxconn Technology Group held its annual carnival at the Taipei Dome for the first time. Photos from the live event, plus a walkthrough recording of the system in real use.</p>
+  </div>
+
+  <div class="onsite-photos">
+    <div class="onsite-photo onsite-photo--wide">
+      <img src="../img/onsite-stadium.jpg" alt="Panoramic view of the Foxconn Carnival at the Taipei Dome" loading="lazy">
+      <span class="onsite-caption">Taipei Dome event grounds · 35,000+ attendees</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/onsite-seatmap.jpg" alt="B1 floor zone location signage" loading="lazy">
+      <span class="onsite-caption">B1 floor zone location signage</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/onsite-lightstick.jpg" alt="Team Foxconn 2025 lightstick" loading="lazy">
+      <span class="onsite-caption">Team Foxconn · on-site cheer lightstick</span>
+    </div>
+  </div>
+
+  <div class="onsite-videos">
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-onsite.jpg" playsinline>
+        <source src="../video/foxconn-onsite.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">Event Highlights</span>
+    </div>
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-app-demo.jpg" playsinline>
+        <source src="../video/foxconn-app-demo.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">Live App Walkthrough</span>
+    </div>
+  </div>
+</section>
+
+<a href="museum.html" class="detail-nextlink">
+  <div>
+    <div class="detail-nextlink-label">Next Case</div>
+    <div class="detail-nextlink-title">National Museum of History · AR Experience</div>
+  </div>
+  <span class="detail-nextlink-arrow">→</span>
+</a>
+
+<footer id="contact">
+  <div class="footer-left">
+    <div class="section-eyebrow" style="margin-bottom:12px;">
+      <div class="cross"><div class="cross-dot"></div></div>
+      <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
+    </div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <div class="footer-info">
+      <p class="name">Helen Hsieh 謝孟庭</p>
+      <p>UI/UX Designer</p>
+      <p>Taipei, Taiwan · Open to remote &amp; overseas roles</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
+      <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-col">
+      <h4>Archive_Metadata</h4>
+      <p>© 2026 Helen Hsieh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+</script>
+</body>
+</html>
