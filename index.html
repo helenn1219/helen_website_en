@@ -14,6 +14,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+.exp-card-sublinks button{all:unset;font-size:12px;color:rgba(240,237,230,.55);cursor:pointer;transition:color .3s,padding-left .3s;}
+.exp-card-sublinks button:hover{color:var(--gold);padding-left:4px;}
+.taitra-lightbox{position:fixed;inset:0;z-index:200;background:rgba(6,8,10,.94);display:flex;align-items:center;justify-content:center;padding:80px 24px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.taitra-lightbox.open{opacity:1;pointer-events:auto;}
+.taitra-lightbox[hidden]{display:none;}
+.taitra-lightbox-stage{width:100%;max-width:1100px;height:100%;overflow-y:auto;overflow-x:hidden;background:#fff;}
+.taitra-lightbox-stage img{display:block;width:100%;height:auto;}
+.taitra-lightbox-close,.taitra-lightbox-prev,.taitra-lightbox-next{position:absolute;display:flex;align-items:center;justify-content:center;border:1px solid rgba(240,237,230,.25);background:rgba(13,17,20,.6);color:var(--text);cursor:pointer;transition:border-color .3s,color .3s;}
+.taitra-lightbox-close:hover,.taitra-lightbox-prev:hover,.taitra-lightbox-next:hover{border-color:var(--gold);color:var(--gold);}
+.taitra-lightbox-close{top:28px;right:24px;width:44px;height:44px;font-size:15px;}
+.taitra-lightbox-prev,.taitra-lightbox-next{top:50%;transform:translateY(-50%);width:52px;height:52px;font-size:18px;}
+.taitra-lightbox-prev{left:24px;}
+.taitra-lightbox-next{right:24px;}
+.taitra-lightbox-caption{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:12px;letter-spacing:.06em;color:rgba(240,237,230,.6);}
+@media(max-width:760px){.taitra-lightbox-stage img{width:100%;}}
 </style>
 </head>
 <body>
@@ -203,9 +218,9 @@
         <details class="exp-card-expand">
           <summary class="exp-card-link">VIEW ALL THREE</summary>
           <ul class="exp-card-sublinks">
-            <li><a href="https://bot-event.accunix.net/web/taitra/taitra46/index.html?utm_source=FB&amp;utm_medium=ITI&amp;utm_campaign=SpecialTraining%281%29&amp;fbclid=IwAR3s2_m7FhDobei5NNGT-gFlXxBxPj3WGEL6C8vE6EGRPTx7qcwv2PDeggY" target="_blank" rel="noopener">International Corporate Intensive Program ↗</a></li>
-            <li><a href="https://bot-event.accunix.net/web/taitra/taitra35/index2.html?utm_source=FB&amp;utm_medium=ITI&amp;utm_campaign=Inservice1&amp;fbclid=IwAR1vFfYyOOjNbGSHswpMLvSeOVNh8HV6Iw-2G3m9yjp5uxlykB7s-Fod0R8" target="_blank" rel="noopener">International Corporate In-Service Program ↗</a></li>
-            <li><a href="https://bot-event.accunix.net/web/taitra/southbound_2020/index.html" target="_blank" rel="noopener">2020 New Southbound Talent Program ↗</a></li>
+            <li><button class="taitra-view-btn" data-taitra="0">International Corporate Intensive Program (Cohort 46)</button></li>
+            <li><button class="taitra-view-btn" data-taitra="1">International Corporate In-Service Program (Cohort 35)</button></li>
+            <li><button class="taitra-view-btn" data-taitra="2">2020 New Southbound Talent Program</button></li>
           </ul>
         </details>
       </div>
@@ -313,6 +328,14 @@ design is my first language, code is my second.</p>
   </div>
 </footer>
 
+<div class="taitra-lightbox" id="taitraLightbox" role="dialog" aria-modal="true" aria-label="TAITRA course site enlarged preview" hidden>
+  <button class="taitra-lightbox-close" id="taitraLightboxClose" aria-label="Close">✕</button>
+  <button class="taitra-lightbox-prev" id="taitraLightboxPrev" aria-label="Previous">←</button>
+  <div class="taitra-lightbox-stage" id="taitraLightboxStage"></div>
+  <button class="taitra-lightbox-next" id="taitraLightboxNext" aria-label="Next">→</button>
+  <p class="taitra-lightbox-caption" id="taitraLightboxCaption"></p>
+</div>
+
 <script>
 // ══ Cursor ══
 const cursor = document.getElementById('cursor');
@@ -417,6 +440,59 @@ const revealObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ══ TAITRA course site lightbox (original site is offline; shown as static screenshots) ══
+const taitraData = [
+  {src:'img/taitra-intensive.jpg', caption:'International Corporate Intensive Program (Cohort 46)'},
+  {src:'img/taitra-inservice.jpg', caption:'International Corporate In-Service Program (Cohort 35)'},
+  {src:'img/taitra-southbound.jpg', caption:'2020 New Southbound Talent Program'}
+];
+const taitraLightbox     = document.getElementById('taitraLightbox');
+const taitraStage        = document.getElementById('taitraLightboxStage');
+const taitraCaption      = document.getElementById('taitraLightboxCaption');
+const taitraCloseBtn     = document.getElementById('taitraLightboxClose');
+const taitraPrevBtn      = document.getElementById('taitraLightboxPrev');
+const taitraNextBtn      = document.getElementById('taitraLightboxNext');
+let taitraIndex = 0;
+let taitraLastFocused = null;
+
+function renderTaitraLightbox() {
+  const item = taitraData[taitraIndex];
+  taitraStage.innerHTML = `<img src="${item.src}" alt="${item.caption}">`;
+  taitraCaption.textContent = item.caption;
+}
+function openTaitraLightbox(index) {
+  taitraLastFocused = document.activeElement;
+  taitraIndex = index;
+  renderTaitraLightbox();
+  taitraLightbox.hidden = false;
+  requestAnimationFrame(() => taitraLightbox.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  taitraCloseBtn.focus();
+}
+function closeTaitraLightbox() {
+  taitraLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { taitraLightbox.hidden = true; taitraStage.innerHTML = ''; }, 300);
+  if (taitraLastFocused) taitraLastFocused.focus();
+}
+function showTaitraRelative(delta) {
+  taitraIndex = (taitraIndex + delta + taitraData.length) % taitraData.length;
+  renderTaitraLightbox();
+}
+document.querySelectorAll('.taitra-view-btn').forEach(btn => {
+  btn.addEventListener('click', () => openTaitraLightbox(Number(btn.dataset.taitra)));
+});
+taitraCloseBtn.addEventListener('click', closeTaitraLightbox);
+taitraPrevBtn.addEventListener('click', () => showTaitraRelative(-1));
+taitraNextBtn.addEventListener('click', () => showTaitraRelative(1));
+taitraLightbox.addEventListener('click', e => { if (e.target === taitraLightbox) closeTaitraLightbox(); });
+window.addEventListener('keydown', e => {
+  if (taitraLightbox.hidden) return;
+  if (e.key === 'Escape') closeTaitraLightbox();
+  if (e.key === 'ArrowLeft') showTaitraRelative(-1);
+  if (e.key === 'ArrowRight') showTaitraRelative(1);
+});
 </script>
 </body>
 </html>
